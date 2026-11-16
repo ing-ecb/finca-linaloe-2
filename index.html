@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Finca Linaloe: el verdadero sabor guerrerense. Menú, horarios y ubicación en Iguala de la Independencia, Guerrero.">
+<title>Finca Linaloe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+/* Layout: cartel mexicano. Papel picado arriba, héroe oscuro con foto enmarcada, bloques de menú a todo el ancho en colores de talavera y serape, una foto o ilustración por sección. Una sola identidad visual a propósito. */
+:root{
+  --noche:#1c1210; --crema:#fff1d6; --papel:#fff8ea; --ink:#2a1710;
+  --rosa:#c9156f; --turq:#0a6e7a; --sol:#f6b000; --ladrillo:#c0420c; --nopal:#1f6b3a; --naranja:#ff7a33;
+  --wa:#0f7a3f;
+  --display:'Rozha One',Georgia,'Times New Roman',serif;
+  --body:'Nunito Sans','Segoe UI',system-ui,sans-serif;
+  --script:'Kaushan Script','Brush Script MT',cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--crema);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--noche)}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--sol);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4,p,ul{margin:0}
+.weave{height:16px;background:repeating-linear-gradient(90deg,var(--rosa) 0 36px,var(--sol) 36px 72px,var(--turq) 72px 108px,var(--ladrillo) 108px 144px,var(--nopal) 144px 180px)}
+
+/* barra superior */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--noche);color:var(--crema);border-bottom:3px solid var(--sol)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;padding-block:10px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:25px;text-decoration:none;color:var(--naranja);line-height:1}
+.top nav{display:flex;gap:2px;flex-wrap:wrap}
+.top nav a{text-decoration:none;font-weight:700;font-size:15px;padding:8px 13px;border-radius:999px}
+.top nav a:hover{background:rgba(255,241,214,.14)}
+.top .acts{display:flex;gap:8px;flex-wrap:wrap}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:11px 22px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:var(--body);line-height:1.1;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:22px;height:22px;flex:none}
+.btn.sm{min-height:42px;padding:8px 16px;font-size:15px}
+.btn.wa{background:var(--wa);color:#fff}
+.btn.call{background:var(--rosa);color:#fff}
+.btn.map{background:var(--sol);color:var(--noche)}
+.btn.line{background:transparent;color:inherit;border-color:currentColor}
+.btn.dark{background:var(--noche);color:var(--crema)}
+
+/* héroe */
+.hero{background:var(--noche) radial-gradient(circle at 1px 1px,rgba(255,241,214,.07) 1.2px,transparent 1.6px) 0 0/22px 22px;color:var(--crema);position:relative;overflow:hidden}
+.garland{display:block;width:100%;height:96px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;padding-block:20px 64px}
+.logo{display:flex;flex-direction:column;align-items:flex-start;line-height:.9}
+.logo .finca{font-family:var(--display);font-size:clamp(34px,6vw,58px);color:#ff5a2a;letter-spacing:.04em}
+.logo .lina{font-family:var(--display);font-size:clamp(52px,8.4vw,96px);color:var(--naranja);letter-spacing:.01em;margin-top:2px}
+.logo .slogan{margin-top:16px;font-weight:800;font-size:clamp(12px,1.9vw,15px);letter-spacing:.24em;color:var(--sol);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo .slogan::before,.logo .slogan::after{content:"";width:28px;height:3px;background:var(--sol);border-radius:3px}
+.lema{font-family:var(--script);font-size:clamp(26px,3.6vw,38px);line-height:1.2;color:var(--crema);margin-top:26px;max-width:18em;text-wrap:balance}
+.lema b{color:var(--sol);font-weight:400}
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:10px 18px;border-radius:999px;background:rgba(255,241,214,.12);border:1.5px solid rgba(255,241,214,.35);font-weight:800;font-size:16px}
+.dot{width:13px;height:13px;border-radius:50%;background:#ff6b6b;flex:none}
+.status[data-open="true"] .dot{background:#4ade80}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.photo-frame{position:relative;justify-self:center;width:100%;max-width:470px}
+.photo-frame img{display:block;width:100%;height:auto;border:10px solid var(--papel);border-radius:22px;box-shadow:14px 14px 0 var(--rosa);transform:rotate(2deg)}
+.sello{position:absolute;left:-14px;bottom:-22px;width:116px;height:116px;border-radius:50%;background:var(--sol);color:var(--noche);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--display);font-size:17px;line-height:1.05;border:4px solid var(--noche);box-shadow:0 0 0 4px var(--sol);transform:rotate(-10deg);padding:8px}
+
+/* menú */
+.menu-intro{padding-block:60px 28px}
+.eyebrow{font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:14px;color:var(--rosa)}
+.menu-intro h2{font-family:var(--display);font-size:clamp(46px,8vw,84px);line-height:1;color:var(--ink);margin-top:6px}
+.menu-intro p{max-width:56ch;margin-top:14px;font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.chips a{text-decoration:none;font-weight:800;font-size:15px;padding:9px 18px;min-height:42px;display:inline-flex;align-items:center;border-radius:999px;border:2.5px solid var(--ink);background:var(--papel)}
+.chips a:nth-child(5n+1):hover{background:var(--rosa);color:#fff;border-color:var(--rosa)}
+.chips a:nth-child(5n+2):hover{background:var(--sol);border-color:var(--sol)}
+.chips a:nth-child(5n+3):hover{background:var(--turq);color:#fff;border-color:var(--turq)}
+.chips a:nth-child(5n+4):hover{background:var(--ladrillo);color:#fff;border-color:var(--ladrillo)}
+.chips a:nth-child(5n+5):hover{background:var(--nopal);color:#fff;border-color:var(--nopal)}
+
+.blk{background:var(--bg);color:var(--fg);padding-block:64px;scroll-margin-top:70px}
+.blk .in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,64px);align-items:start}
+.blk.rev .fig{order:2}
+.fig{margin:0;position:sticky;top:96px}
+.fig .ph{display:block;width:100%;height:auto;border:9px solid var(--papel);border-radius:20px;box-shadow:12px 12px 0 var(--frame);transform:rotate(-1.6deg)}
+.blk.rev .fig .ph{transform:rotate(1.6deg);box-shadow:-12px 12px 0 var(--frame)}
+.fig .strip{margin-top:26px;border-radius:16px;border:7px solid var(--papel);box-shadow:8px 8px 0 var(--frame)}
+.fig .strips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:26px}
+.fig .strips .strip{margin:0;width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-width:6px;box-shadow:6px 6px 0 var(--frame)}
+.fig .em{display:block;width:100%;aspect-ratio:1/1;background:var(--papel);border:9px solid var(--papel);border-radius:22px;box-shadow:12px 12px 0 var(--frame);outline:3px dashed var(--frame);outline-offset:-1px}
+.blk h3{font-family:var(--display);font-weight:400;font-size:clamp(36px,5.4vw,58px);line-height:1.02;color:var(--head);text-wrap:balance}
+.kicker{display:inline-block;margin-bottom:10px;font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:var(--head);color:var(--bg)}
+.nota{margin-top:12px;font-size:16.5px;max-width:52ch}
+.hoy{margin-top:14px;display:inline-flex;gap:10px;align-items:center;padding:8px 16px;border-radius:12px;background:var(--papel);color:var(--noche);font-weight:800;font-size:15px}
+.grp{margin-top:26px}
+.grp h4{font-family:var(--body);font-weight:800;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--head);padding-bottom:8px;border-bottom:3px solid var(--head);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.grp h4 small{font-size:13px;letter-spacing:.04em;text-transform:none;font-weight:700;opacity:.92}
+.menu{list-style:none;padding:0;margin:6px 0 0}
+.menu li{display:grid;grid-template-columns:auto minmax(12px,1fr) auto;column-gap:10px;align-items:baseline;padding:9px 0;border-bottom:1px dashed var(--line)}
+.menu .n{font-weight:800;font-size:18px;min-width:0}
+.menu .dots{height:0;border-bottom:2.5px dotted currentColor;opacity:.4;transform:translateY(-5px)}
+.menu .p{font-weight:800;font-size:19px;font-variant-numeric:tabular-nums;color:var(--price)}
+.menu .d{grid-column:1/-1;font-size:15px;opacity:.92;margin-top:2px;max-width:60ch}
+.menu li.hi .n{font-family:var(--display);font-weight:400;font-size:24px}
+.pie{margin-top:18px;font-weight:700;font-size:15.5px}
+
+.t-rosa{--bg:var(--rosa);--fg:#fff;--head:var(--sol);--price:#fff;--line:rgba(255,255,255,.35);--frame:var(--sol)}
+.t-papel{--bg:var(--papel);--fg:var(--ink);--head:var(--rosa);--price:var(--ladrillo);--line:rgba(42,23,16,.22);--frame:var(--turq)}
+.t-crema{--bg:var(--crema);--fg:var(--ink);--head:var(--turq);--price:var(--rosa);--line:rgba(42,23,16,.22);--frame:var(--sol)}
+.t-nopal{--bg:var(--nopal);--fg:#fff;--head:var(--sol);--price:#fff;--line:rgba(255,255,255,.35);--frame:var(--rosa)}
+.t-noche{--bg:var(--noche);--fg:var(--crema);--head:var(--naranja);--price:var(--sol);--line:rgba(255,241,214,.26);--frame:var(--rosa)}
+.t-sol{--bg:var(--sol);--fg:var(--noche);--head:#8f1d4f;--price:#8f1d4f;--line:rgba(28,18,16,.3);--frame:var(--rosa)}
+.t-ladrillo{--bg:var(--ladrillo);--fg:#fff;--head:var(--sol);--price:#fff;--line:rgba(255,255,255,.35);--frame:var(--noche)}
+.t-turq{--bg:var(--turq);--fg:#fff;--head:var(--sol);--price:#fff;--line:rgba(255,255,255,.35);--frame:var(--rosa)}
+
+.domingo-badge{display:inline-flex;flex-direction:column;align-items:flex-start;margin-bottom:6px}
+.domingo-badge .gran{font-family:var(--display);font-size:clamp(46px,8vw,86px);line-height:.95;color:var(--sol)}
+
+/* horario y ubicación */
+.info{background:var(--papel);padding-block:72px}
+.info h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,64px);line-height:1;color:var(--ink)}
+.info .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:28px;align-items:start}
+.card{background:var(--crema);border:3px solid var(--ink);border-radius:24px;padding:28px;box-shadow:10px 10px 0 var(--turq);min-width:0}
+.card.b{box-shadow:10px 10px 0 var(--rosa)}
+.card h3{font-family:var(--display);font-weight:400;font-size:30px;margin-bottom:14px;color:var(--rosa)}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours th,.hours td{padding:11px 8px;border-bottom:1.5px dashed rgba(42,23,16,.28);font-size:16.5px;text-align:left}
+.hours td{text-align:right;font-weight:800}
+.hours tr:last-child th,.hours tr:last-child td{border-bottom:0}
+.hours tr.closed td{color:var(--chile,#b3261e)}
+.hours tr.today{background:var(--sol)}
+.hours tr.today td{color:var(--noche)}
+.hours tr.today th::after{content:" · hoy";font-weight:800}
+.addr{font-size:20px;font-weight:700;line-height:1.35}
+.addr small{display:block;font-size:15px;font-weight:600;margin-top:4px;opacity:.85}
+.tel{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.tel strong{font-family:var(--display);font-weight:400;font-size:34px;letter-spacing:.02em;color:var(--ink)}
+.copy{font-family:var(--body);font-weight:800;font-size:14px;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;min-height:36px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.soc-t{margin-top:26px;font-weight:800;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--rosa)}
+.btns.soc .btn{border-color:var(--ink);color:var(--ink)}
+.btns.soc .btn:hover{background:var(--ink);color:var(--crema)}
+
+.tels{display:grid;gap:12px;margin-top:20px}
+.tel-row{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap}
+.tel-row .lbl{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--rosa);min-width:92px}
+.tel-row strong{font-family:var(--display);font-weight:400;font-size:28px;color:var(--ink)}
+.hours th,.hours td{color:var(--ink)}
+.hours tr.closed td{color:#b3261e}
+.hours tr.today td{color:var(--noche)}
+@media (max-width:420px){.hours th,.hours td{font-size:15.5px;padding:10px 4px}.tel-row strong{font-size:25px}}
+footer{background:var(--noche);color:var(--crema);text-align:center}
+footer .wrap{padding-block:48px 40px}
+footer .gracias{font-family:var(--script);font-size:clamp(28px,4.4vw,46px);line-height:1.2;color:var(--sol);text-wrap:balance}
+footer .casa{margin-top:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px}
+footer .brand{display:inline-block;margin-top:22px;font-size:30px}
+footer .legal{margin-top:12px;font-size:14px;opacity:.85}
+
+.fab{position:fixed;right:max(16px,calc(env(safe-area-inset-right,0px) + 12px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:35;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(0,0,0,.25),0 0 0 4px var(--papel);text-decoration:none}
+.fab svg{width:32px;height:32px}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:48px;padding-bottom:56px}
+  .photo-frame{max-width:420px}
+  .blk .in{grid-template-columns:minmax(0,1fr)}
+  .blk.rev .fig{order:0}
+  .fig{position:static;max-width:520px}
+  .info .cols{grid-template-columns:minmax(0,1fr)}
+  .top nav{display:none}
+  .top .wrap{justify-content:space-between}
+}
+@media (max-width:420px){
+  .brand{font-size:20px}
+  .top .wrap{gap:8px 10px}
+  .top .btn.sm{padding:7px 11px;font-size:14px;min-height:40px;gap:6px}
+  .top .btn.sm svg{width:18px;height:18px}
+  .menu .n{font-size:17px}
+  .card{padding:22px 18px}
+  .tel strong{font-size:29px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<!--
+  GUÍA RÁPIDA PARA EDITAR (en GitHub: abre este archivo y pulsa el lápiz)
+  - Cambiar un precio o un nombre: usa Ctrl+F, busca el platillo y cambia el texto.
+  - Cambiar el WhatsApp: busca 527331071545 (enlaces) y 733 107 1545 (texto visible).
+  - Cambiar el teléfono de llamadas: busca +527331107193 y 733 110 7193.
+  - Cambiar una foto: sube la nueva a la carpeta img con el MISMO nombre.
+-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l5-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.6 7.4c-.4.7-.3 1.7.6 3.2 1 1.7 2.3 2.9 3.9 3.6 1 .4 1.8.2 2.3-.3l.5-.8-2-1.3-.9.6c-.9-.4-1.7-1.2-2.2-2.1l.6-.9-1.1-2.1z" fill="currentColor"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.2 7-11.8a7 7 0 0 0-14 0c0 5.6 7 11.8 7 11.8z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="9.7" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M13.2 20v-6.6h2.3l.4-2.7h-2.7V9.1c0-.8.3-1.3 1.4-1.3h1.4V5.4c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2h-2.3v2.7h2.3V20z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Finca Linaloe</a>
+    <nav aria-label="Principal">
+      <a href="#menu">Menú</a>
+      <a href="#domingos">Domingos</a>
+      <a href="#horario">Horario</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <div class="acts">
+      <a class="btn sm wa" href="https://wa.me/527331071545?text=Hola%2C%20vi%20su%20p%C3%A1gina%20de%20Finca%20Linaloe%20y%20quisiera%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+      <a class="btn sm call" href="tel:+527331107193"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" aria-labelledby="titulo">
+    <svg class="garland" aria-hidden="true" focusable="false"><defs><pattern id="pp" width="660" height="96" patternUnits="userSpaceOnUse"><path d="M5 16 H105 V70 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 Z" fill="#d81b7a"/><circle cx="55" cy="38" r="9" fill="#1c1210"/><path d="M55 52 l7 7 -7 7 -7 -7z" fill="#1c1210"/><circle cx="25" cy="38" r="3" fill="#1c1210"/><circle cx="40" cy="38" r="3" fill="#1c1210"/><circle cx="70" cy="38" r="3" fill="#1c1210"/><circle cx="85" cy="38" r="3" fill="#1c1210"/><path d="M15 24 H95" stroke="#1c1210" stroke-width="2" stroke-dasharray="4 5" opacity=".55"/><path d="M115 16 H215 V70 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 Z" fill="#f6b000"/><circle cx="165" cy="38" r="9" fill="#1c1210"/><path d="M165 52 l7 7 -7 7 -7 -7z" fill="#1c1210"/><circle cx="135" cy="38" r="3" fill="#1c1210"/><circle cx="150" cy="38" r="3" fill="#1c1210"/><circle cx="180" cy="38" r="3" fill="#1c1210"/><circle cx="195" cy="38" r="3" fill="#1c1210"/><path d="M125 24 H205" stroke="#1c1210" stroke-width="2" stroke-dasharray="4 5" opacity=".55"/><path d="M225 16 H325 V70 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 Z" fill="#0e9aa7"/><circle cx="275" cy="38" r="9" fill="#1c1210"/><path d="M275 52 l7 7 -7 7 -7 -7z" fill="#1c1210"/><circle cx="245" cy="38" r="3" fill="#1c1210"/><circle cx="260" cy="38" r="3" fill="#1c1210"/><circle cx="290" cy="38" r="3" fill="#1c1210"/><circle cx="305" cy="38" r="3" fill="#1c1210"/><path d="M235 24 H315" stroke="#1c1210" stroke-width="2" stroke-dasharray="4 5" opacity=".55"/><path d="M335 16 H435 V70 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 Z" fill="#ff6a2b"/><circle cx="385" cy="38" r="9" fill="#1c1210"/><path d="M385 52 l7 7 -7 7 -7 -7z" fill="#1c1210"/><circle cx="355" cy="38" r="3" fill="#1c1210"/><circle cx="370" cy="38" r="3" fill="#1c1210"/><circle cx="400" cy="38" r="3" fill="#1c1210"/><circle cx="415" cy="38" r="3" fill="#1c1210"/><path d="M345 24 H425" stroke="#1c1210" stroke-width="2" stroke-dasharray="4 5" opacity=".55"/><path d="M445 16 H545 V70 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 Z" fill="#3aa655"/><circle cx="495" cy="38" r="9" fill="#1c1210"/><path d="M495 52 l7 7 -7 7 -7 -7z" fill="#1c1210"/><circle cx="465" cy="38" r="3" fill="#1c1210"/><circle cx="480" cy="38" r="3" fill="#1c1210"/><circle cx="510" cy="38" r="3" fill="#1c1210"/><circle cx="525" cy="38" r="3" fill="#1c1210"/><path d="M455 24 H535" stroke="#1c1210" stroke-width="2" stroke-dasharray="4 5" opacity=".55"/><path d="M555 16 H655 V70 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 l-12.5 12 l-12.5 -12 Z" fill="#8a3fbf"/><circle cx="605" cy="38" r="9" fill="#1c1210"/><path d="M605 52 l7 7 -7 7 -7 -7z" fill="#1c1210"/><circle cx="575" cy="38" r="3" fill="#1c1210"/><circle cx="590" cy="38" r="3" fill="#1c1210"/><circle cx="620" cy="38" r="3" fill="#1c1210"/><circle cx="635" cy="38" r="3" fill="#1c1210"/><path d="M565 24 H645" stroke="#1c1210" stroke-width="2" stroke-dasharray="4 5" opacity=".55"/></pattern></defs><path d="M0 12 H5000" stroke="#a07850" stroke-width="2.5"/><rect y="0" width="100%" height="96" fill="url(#pp)"/></svg>
+    <div class="wrap">
+      <div>
+        <h1 class="logo" id="titulo"><span class="finca">FINCA</span><span class="lina">LINÁLOE</span><span class="slogan">EL VERDADERO SABOR GUERRERENSE</span></h1>
+        <p class="lema">¡Siempre es un gusto recibirlos <b>en esta su casa!</b></p>
+        <div class="status" id="status" role="status" data-open="false"><span class="dot" aria-hidden="true"></span><span id="status-text">Consulta nuestro horario</span></div>
+        <div class="cta">
+          <a class="btn wa" href="https://wa.me/527331071545?text=Hola%2C%20vi%20su%20p%C3%A1gina%20de%20Finca%20Linaloe%20y%20quisiera%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
+          <a class="btn call" href="tel:+527331107193"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
+          <a class="btn line" href="#menu">Ver el menú</a>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <img src="img/hero.jpg" alt="Pozole verde con flautas en un cazo de barro, frente a una charola pintada a mano de Finca Linaloe" width="1000" height="750">
+        <div class="sello" aria-hidden="true">Cocina guerrerense</div>
+      </div>
+    </div>
+  </section>
+  <div class="weave" aria-hidden="true"></div>
+
+  <section class="menu-intro" id="menu" aria-labelledby="menu-t">
+    <div class="wrap">
+      <div class="eyebrow">Lo que te espera en la mesa</div>
+      <h2 id="menu-t">Nuestro menú</h2>
+      <p>Pozole, tamales, antojitos y bebidas de la casa. Todos nuestros platillos se preparan al momento, por su comprensión, gracias.</p>
+      <nav class="chips" id="chips" aria-label="Categorías del menú">
+        <a href="#pozole">Pozole</a>
+        <a href="#tacos">Tacos</a>
+        <a href="#enchiladas">Enchiladas</a>
+        <a href="#antojitos">Sopes y más</a>
+        <a href="#botanas">Botanas</a>
+        <a href="#tamales">Tamales y atole</a>
+        <a href="#domingos">Domingos</a>
+        <a href="#bebidas">Bebidas</a>
+        <a href="#postres">Postres y extras</a>
+      </nav>
+    </div>
+  </section>
+
+  <div id="carta">
+    <!-- ===== POZOLE ===== -->
+    <section class="blk t-rosa" id="pozole">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/pozole.jpg" alt="Pozole verde con pollo, pata de puerco, aguacate y tostadas" width="860" height="860">
+          </figure>
+          <div>
+            <span class="kicker">Pollo o puerco</span>
+            <h3>Pozole</h3>
+            <p class="nota">El pozole blanco se sirve de jueves a domingo. El pozole verde y el elopozole, solo los jueves.</p>
+            <div class="hoy" id="hoy-pozole">El pozole se sirve de jueves a domingo</div>
+            <div class="grp">
+              <h4>Pozole blanco<small>Jueves a domingo</small></h4>
+              <ul class="menu">
+                <li><span class="n">Mini</span><span class="dots"></span><span class="p">$115</span></li>
+                <li><span class="n">Chico</span><span class="dots"></span><span class="p">$120</span></li>
+                <li><span class="n">Grande</span><span class="dots"></span><span class="p">$125</span></li>
+              </ul>
+            </div>
+            <div class="grp">
+              <h4>Pozole verde<small>Solo jueves</small></h4>
+              <ul class="menu">
+                <li><span class="n">Mini</span><span class="dots"></span><span class="p">$120</span></li>
+                <li><span class="n">Chico</span><span class="dots"></span><span class="p">$125</span></li>
+                <li><span class="n">Grande</span><span class="dots"></span><span class="p">$130</span></li>
+                <li><span class="n">Elopozole</span><span class="dots"></span><span class="p">$120</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TACOS ===== -->
+    <section class="blk t-papel rev" id="tacos">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/tacos.jpg" alt="Tacos dorados con queso, crema y verdura" width="740" height="695">
+          </figure>
+          <div>
+            <h3>Tacos</h3>
+            <p class="nota">A elegir: Pollo, pierna, picadillo, longaniza, tinga, requesón, papa o queso fresco.</p>
+            <div class="grp">
+              <ul class="menu">
+                <li><span class="n">Tacos ahogados</span><span class="dots"></span><span class="p">$86</span></li>
+                <li><span class="n">Tacos tiernos o dorados</span><span class="dots"></span><span class="p">$76</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ENCHILADAS, ENMOLADAS Y ENFRIJOLADAS ===== -->
+    <section class="blk t-nopal" id="enchiladas">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/enchiladas.jpg" alt="Enchiladas verdes ahogadas con lechuga, queso fresco y aguacate" width="853" height="575">
+          </figure>
+          <div>
+            <h3>Enchiladas, enmoladas y enfrijoladas</h3>
+            <p class="nota">A elegir: Pollo, pierna, picadillo, longaniza, tinga, requesón, papa o queso fresco. Las potosinas van rellenas de queso fresco.</p>
+            <div class="grp">
+              <ul class="menu">
+                <li><span class="n">Enchiladas verdes</span><span class="dots"></span><span class="p">$76</span></li>
+                <li><span class="n">Enchiladas rojas</span><span class="dots"></span><span class="p">$76</span></li>
+                <li><span class="n">Enchiladas potosinas</span><span class="dots"></span><span class="p">$80</span></li>
+                <li><span class="n">Enchiladas Linaloe</span><span class="dots"></span><span class="p">$84</span><span class="d">Rojas con papa y zanahoria</span></li>
+                <li><span class="n">Enchiladas ahogadas</span><span class="dots"></span><span class="p">$86</span></li>
+                <li><span class="n">Enmoladas</span><span class="dots"></span><span class="p">$90</span></li>
+                <li><span class="n">Enfrijoladas</span><span class="dots"></span><span class="p">$84</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOPES, CHILAQUILES, TOSTADAS Y QUESADILLAS ===== -->
+    <section class="blk t-crema rev" id="antojitos">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/sopes.jpg" alt="Sopes con lechuga, carne, pollo deshebrado y queso fresco en plato de barro" width="900" height="608">
+            <img class="strip" src="img/tacos-caldos.jpg" alt="Tacos dorados con queso y verdura, junto a cazuelitas de barro con caldo verde" width="900" height="728">
+          </figure>
+          <div>
+            <h3>Sopes, chilaquiles, tostadas y quesadillas</h3>
+            <div class="grp">
+              <h4>Sopes</h4>
+              <ul class="menu">
+                <li><span class="n">Sopes Linaloe</span><span class="dots"></span><span class="p">$86</span><span class="d">Pollo, pierna, picadillo, longaniza o tinga</span></li>
+                <li><span class="n">Sopes sencillos</span><span class="dots"></span><span class="p">$60</span><span class="d">Crema y queso</span></li>
+              </ul>
+            </div>
+            <div class="grp">
+              <h4>Chilaquiles</h4>
+              <ul class="menu">
+                <li><span class="n">Chilaquiles verdes</span><span class="dots"></span><span class="p">$90</span></li>
+                <li><span class="n">Chilaquiles Linaloe con chicharrón</span><span class="dots"></span><span class="p">$95</span></li>
+                <li><span class="n">Chilaquiles Linaloe con carne</span><span class="dots"></span><span class="p">$100</span><span class="d">Pollo, pierna, picadillo, longaniza, tinga, requesón, papa o queso fresco, o huevo</span></li>
+              </ul>
+            </div>
+            <div class="grp">
+              <h4>Chalupitas y tostadas</h4>
+              <ul class="menu">
+                <li><span class="n">Chalupitas de Chilapa</span><span class="dots"></span><span class="p">$76</span><span class="d">A elegir: Pollo, pierna, picadillo, longaniza, tinga, requesón, papa o queso fresco</span></li>
+                <li><span class="n">Tostadas sencillas</span><span class="dots"></span><span class="p">$57</span><span class="d">Frijoles, crema y queso</span></li>
+                <li><span class="n">Tostadas sencillas con verdura</span><span class="dots"></span><span class="p">$60</span></li>
+                <li><span class="n">Tostadas con carne</span><span class="dots"></span><span class="p">$90</span><span class="d">Pollo, pierna, picadillo, longaniza o tinga</span></li>
+                <li><span class="n">Tostadas especiales</span><span class="dots"></span><span class="p">$105</span><span class="d">De pata o de lengua</span></li>
+              </ul>
+            </div>
+            <div class="grp">
+              <h4>Quesadillas<small>A elegir: Pollo, pierna, picadillo, longaniza, tinga, requesón, papa o queso fresco</small></h4>
+              <ul class="menu">
+                <li><span class="n">Quesadillas ahogadas</span><span class="dots"></span><span class="p">$86</span></li>
+                <li><span class="n">Quesadillas doradas</span><span class="dots"></span><span class="p">$78</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOTANAS ===== -->
+    <section class="blk t-noche" id="botanas">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/botanas.jpg" alt="Botana en cazuelas de barro con tostadas, aguacate, jitomate, chiles rellenos y queso" width="860" height="522">
+            <div class="strips">
+              <img class="strip" src="img/botanas-2.jpg" alt="Tostadas, tacos dorados y ensalada en platón de barro" width="760" height="498">
+              <img class="strip" src="img/botanas-3.jpg" alt="Botana de pata con aguacate, jitomate, cebolla y zanahoria" width="760" height="486">
+            </div>
+          </figure>
+          <div>
+            <h3>Botanas</h3>
+            <div class="grp">
+              <ul class="menu">
+                <li><span class="n">Orden de pata</span><span class="dots"></span><span class="p">$260</span></li>
+                <li><span class="n">½ orden de pata</span><span class="dots"></span><span class="p">$130</span></li>
+                <li><span class="n">Orden de lengua</span><span class="dots"></span><span class="p">$260</span></li>
+                <li><span class="n">½ orden de lengua</span><span class="dots"></span><span class="p">$130</span></li>
+                <li><span class="n">Mixta (pata y lengua)</span><span class="dots"></span><span class="p">$300</span></li>
+                <li><span class="n">½ orden de mixta</span><span class="dots"></span><span class="p">$150</span></li>
+                <li><span class="n">Tacos mixtos</span><span class="dots"></span><span class="p">$120</span><span class="d">6 tacos surtidos partidos a la mitad, preparados</span></li>
+                <li><span class="n">Chiles rellenos de requesón</span><span class="dots"></span><span class="p">$140</span><span class="d">4 piezas · solo los jueves</span></li>
+                <li class="hi"><span class="n">Linaloe</span><span class="dots"></span><span class="p">$680</span><span class="d">½ orden mixta, 1 orden de tostadas sencillas, ½ orden de enchiladas verdes, 2 chilitos rellenos y una orden de chalupas</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TAMALES Y ATOLE ===== -->
+    <section class="blk t-sol rev" id="tamales">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/tamales.jpg" alt="Tamales con un jarro de atole sobre un plato de barro" width="860" height="708">
+          </figure>
+          <div>
+            <h3>Tamales y atole</h3>
+            <div class="grp">
+              <ul class="menu">
+                <li><span class="n">Tamales de queso con pasas</span><span class="dots"></span><span class="p">$38</span></li>
+                <li><span class="n">Tamales oaxaqueños</span><span class="dots"></span><span class="p">$40</span><span class="d">Verdes o rojos de pollo</span></li>
+                <li><span class="n">Atole del día</span><span class="dots"></span><span class="p">$38</span></li>
+                <li><span class="n">½ litro de atole</span><span class="dots"></span><span class="p">$85</span></li>
+                <li><span class="n">1 litro de atole</span><span class="dots"></span><span class="p">$170</span></li>
+                <li><span class="n">Café de olla</span><span class="dots"></span><span class="p">$35</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TODOS LOS DOMINGOS ===== -->
+    <section class="blk t-ladrillo" id="domingos">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/domingos.jpg" alt="Mole rojo con arroz y frijoles en plato de barro" width="790" height="715">
+          </figure>
+          <div>
+            <span class="kicker">A partir de las 2:00 pm</span>
+            <h3>Todos los domingos</h3>
+            <div class="grp">
+              <ul class="menu">
+                <li><span class="n">Mole verde</span><span class="dots"></span><span class="p">$98</span></li>
+                <li><span class="n">Mole rojo</span><span class="dots"></span><span class="p">$98</span></li>
+                <li><span class="n">Cochinita</span><span class="dots"></span><span class="p">$120</span></li>
+                <li><span class="n">Chile de ciruela</span><span class="dots"></span><span class="p">$98</span></li>
+                <li><span class="n">Tamales nejos y de frijol</span><span class="dots"></span><span class="p">$28</span></li>
+              </ul>
+            </div>
+            <p class="pie">Incluye sopa, frijoles y tortillas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BEBIDAS SIN ALCOHOL ===== -->
+    <section class="blk t-turq rev" id="bebidas">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/bebidas-sin-alcohol.jpg" alt="Jarros de aguas frescas de limón, jamaica, naranja y fresa" width="1000" height="527">
+          </figure>
+          <div>
+            <h3>Bebidas sin alcohol</h3>
+            <div class="grp">
+              <ul class="menu">
+                <li><span class="n">Refresco de 500 ml</span><span class="dots"></span><span class="p">$38</span></li>
+                <li><span class="n">Refresco de 600 ml</span><span class="dots"></span><span class="p">$40</span></li>
+                <li><span class="n">Agua de sabor chica, 500 ml</span><span class="dots"></span><span class="p">$28</span></li>
+                <li><span class="n">Agua de sabor grande, 1 litro</span><span class="dots"></span><span class="p">$50</span></li>
+                <li><span class="n">Agua natural chica, 500 ml</span><span class="dots"></span><span class="p">$28</span></li>
+                <li><span class="n">Agua natural grande, 1 litro</span><span class="dots"></span><span class="p">$50</span></li>
+                <li><span class="n">Naranjada mineral o natural</span><span class="dots"></span><span class="p">$80</span></li>
+                <li><span class="n">Limonada mineral o natural</span><span class="dots"></span><span class="p">$80</span></li>
+                <li><span class="n">Jarra de agua de sabor</span><span class="dots"></span><span class="p">$100</span></li>
+                <li><span class="n">Cerveza sin alcohol</span><span class="dots"></span><span class="p">$48</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BEBIDAS CON ALCOHOL ===== -->
+    <section class="blk t-noche" id="alcohol">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/michelada.jpg" alt="Michelada con borde enchilado y apio en tarro de vidrio" width="770" height="560">
+            <img class="strip" src="img/cervezas.jpg" alt="Botellas de cerveza Corona Extra en hielo" width="900" height="497">
+          </figure>
+          <div>
+            <h3>Bebidas con alcohol</h3>
+            <div class="grp">
+              <ul class="menu">
+                <li><span class="n">Cerveza</span><span class="dots"></span><span class="p">$49</span><span class="d">Corona Light, Corona, Victoria, Negra Modelo, Modelo, Cristal, Bohemia Clara, Bohemia Oscura, Bohemia Cristal, XX Lager, Amstel Ultra, XX Ámbar y Heineken</span></li>
+                <li><span class="n">Michelada</span><span class="dots"></span><span class="p">$75</span></li>
+                <li><span class="n">Cubana</span><span class="dots"></span><span class="p">$70</span></li>
+                <li><span class="n">Clamatada</span><span class="dots"></span><span class="p">$85</span></li>
+                <li><span class="n">Mezcalillo de sabores</span><span class="dots"></span><span class="p">$95</span></li>
+                <li><span class="n">Jarrita de mezcal, 250 ml</span><span class="dots"></span><span class="p">$90</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== POSTRES Y EXTRAS ===== -->
+    <section class="blk t-papel rev" id="postres">
+      <div class="wrap">
+        <div class="in">
+          <figure class="fig">
+            <img class="ph" src="img/postres.jpg" alt="Postres cremosos en vasitos de vidrio con base de caramelo" width="960" height="536">
+          </figure>
+          <div>
+            <h3>Postres y extras</h3>
+            <div class="grp">
+              <h4>Postres</h4>
+              <ul class="menu">
+                <li><span class="n">Postre del día</span><span class="dots"></span><span class="p">$50</span></li>
+                <li><span class="n">Flan horneado</span><span class="dots"></span><span class="p">$80</span></li>
+              </ul>
+            </div>
+            <div class="grp">
+              <h4>Extras</h4>
+              <ul class="menu">
+                <li><span class="n">Pata de puerco</span><span class="dots"></span><span class="p">$50</span></li>
+                <li><span class="n">Pedazo de lengua</span><span class="dots"></span><span class="p">$55</span></li>
+                <li><span class="n">Molleja</span><span class="dots"></span><span class="p">$16</span></li>
+                <li><span class="n">Pata de pollo</span><span class="dots"></span><span class="p">$16</span></li>
+                <li><span class="n">Orden de aguacate</span><span class="dots"></span><span class="p">$60</span></li>
+                <li><span class="n">Orden de chicharrón</span><span class="dots"></span><span class="p">$45</span></li>
+                <li><span class="n">Taco extra para pozole</span><span class="dots"></span><span class="p">$16</span></li>
+                <li><span class="n">Tostada extra para pozole</span><span class="dots"></span><span class="p">$15</span></li>
+                <li><span class="n">Consomé de tacos ahogados</span><span class="dots"></span><span class="p">$65</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="weave" aria-hidden="true"></div>
+
+  <section class="info" aria-labelledby="info-t">
+    <div class="wrap">
+      <h2 id="info-t">Ven a visitarnos</h2>
+      <div class="cols">
+        <div class="card" id="horario" style="scroll-margin-top:84px">
+          <h3>Horario de servicio</h3>
+          <table class="hours" id="hours"><caption style="position:absolute;left:-9999px">Horario por día</caption><tbody>
+            <tr data-d="1" class="closed"><th scope="row">Lunes</th><td>Cerrado</td></tr>
+            <tr data-d="2"><th scope="row">Martes</th><td>6:30 pm – 11:00 pm</td></tr>
+            <tr data-d="3"><th scope="row">Miércoles</th><td>6:30 pm – 11:00 pm</td></tr>
+            <tr data-d="4"><th scope="row">Jueves</th><td>1:30 pm – 10:30 pm</td></tr>
+            <tr data-d="5"><th scope="row">Viernes</th><td>6:30 pm – 11:00 pm</td></tr>
+            <tr data-d="6"><th scope="row">Sábado</th><td>6:30 pm – 11:00 pm</td></tr>
+            <tr data-d="0"><th scope="row">Domingo</th><td>2:00 pm – 11:00 pm</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card b" id="ubicacion" style="scroll-margin-top:84px">
+          <h3>Ubicación</h3>
+          <p class="addr">Ramón Corona 19, Col. Centro<small>Iguala de la Independencia, Guerrero</small></p>
+          <div class="btns">
+            <a class="btn map" href="https://www.google.com/maps/search/?api=1&amp;query=Finca%20Linaloe%2C%20Ram%C3%B3n%20Corona%2019%2C%20Centro%2C%20Iguala%20de%20la%20Independencia%2C%20Guerrero" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar en Google Maps</a>
+          </div>
+          <div class="tels">
+            <div class="tel-row"><span class="lbl">WhatsApp</span><strong id="num-wa">733 107 1545</strong><button class="copy" type="button" data-target="num-wa">Copiar</button></div>
+            <div class="tel-row"><span class="lbl">Llamadas</span><strong id="num-tel">733 110 7193</strong><button class="copy" type="button" data-target="num-tel">Copiar</button></div>
+          </div>
+          <div class="btns">
+            <a class="btn wa" href="https://wa.me/527331071545?text=Hola%2C%20vi%20su%20p%C3%A1gina%20de%20Finca%20Linaloe%20y%20quisiera%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+            <a class="btn call" href="tel:+527331107193"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
+          </div>
+          <div class="soc-t">Síguenos</div>
+          <div class="btns soc">
+            <a class="btn line sm" href="https://www.instagram.com/finca.linaloe/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@finca.linaloe</a>
+            <a class="btn line sm" href="https://www.facebook.com/share/1FMGaL7nkF/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="weave" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="gracias">¡Siempre es un gusto recibirlos en esta su casa!</p>
+    <p class="casa">La casa de todas y todos</p>
+    <a class="brand" href="#inicio">Finca Linaloe</a>
+    <p class="legal">Ramón Corona 19, Col. Centro · Iguala de la Independencia, Gro. · Tel. 733 110 7193 · WhatsApp 733 107 1545</p>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/527331071545?text=Hola%2C%20vi%20su%20p%C3%A1gina%20de%20Finca%20Linaloe%20y%20quisiera%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script>
+/* Solo marca si está abierto, resalta el día de hoy y copia números. El menú y el horario ya están escritos en el HTML. */
+(function(){
+  var DIAS=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  var NOCHE=[18*60+30,23*60];
+  var SCHED={0:[14*60,23*60],1:null,2:NOCHE,3:NOCHE,4:[13*60+30,22*60+30],5:NOCHE,6:NOCHE};
+  function fmt(m){var h=Math.floor(m/60),mm=m%60;return (h%12||12)+':'+(mm<10?'0':'')+mm+' '+(h>=12?'pm':'am');}
+  function ahora(){
+    try{
+      var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Mexico_City',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()),m={};
+      p.forEach(function(x){m[x.type]=x.value;});
+      return {dia:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[m.weekday],min:(parseInt(m.hour,10)%24)*60+parseInt(m.minute,10)};
+    }catch(e){var d=new Date();return {dia:d.getDay(),min:d.getHours()*60+d.getMinutes()};}
+  }
+  function proxima(n){
+    for(var o=0;o<8;o++){
+      var d=(n.dia+o)%7,s=SCHED[d];
+      if(s&&(o>0||n.min<s[0])){
+        var cuando=o===0?'hoy':(o===1?'mañana':'el '+DIAS[d].toLowerCase());
+        return 'Cerrado · abrimos '+cuando+' a las '+fmt(s[0]);
+      }
+    }
+    return 'Cerrado';
+  }
+  function pintar(){
+    var n=ahora(),s=SCHED[n.dia],abierto=!!s&&n.min>=s[0]&&n.min<s[1];
+    var st=document.getElementById('status'),tx=document.getElementById('status-text');
+    if(st&&tx){st.setAttribute('data-open',abierto?'true':'false');tx.textContent=abierto?('Abierto ahora · cerramos a las '+fmt(s[1])):proxima(n);}
+    var rows=document.querySelectorAll('#hours tr[data-d]');
+    for(var i=0;i<rows.length;i++){
+      if(parseInt(rows[i].getAttribute('data-d'),10)===n.dia)rows[i].classList.add('today');else rows[i].classList.remove('today');
+    }
+    var hoy=document.getElementById('hoy-pozole');
+    if(hoy)hoy.textContent=n.dia===4?'Hoy hay pozole blanco, verde y elopozole':((n.dia===5||n.dia===6||n.dia===0)?'Hoy hay pozole blanco':'El pozole se sirve de jueves a domingo');
+  }
+  try{pintar();setInterval(pintar,60000);}catch(e){}
+  var bs=document.querySelectorAll('.copy');
+  Array.prototype.forEach.call(bs,function(cp){
+    cp.addEventListener('click',function(){
+      var t=document.getElementById(cp.getAttribute('data-target')),txt=t.textContent,orig=cp.textContent;
+      var ok=function(){cp.textContent='¡Copiado!';setTimeout(function(){cp.textContent=orig;},2000);};
+      var sel=function(){var r=document.createRange();r.selectNodeContents(t);var s=window.getSelection();s.removeAllRanges();s.addRange(r);};
+      try{navigator.clipboard.writeText(txt).then(ok,sel);}catch(err){sel();}
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
